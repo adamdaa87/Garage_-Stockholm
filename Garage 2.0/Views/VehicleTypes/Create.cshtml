@@ -1,0 +1,34 @@
+﻿@model VehicleTypeViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1>Create Vehicle Type</h1>
+
+<hr />
+<div class = "constainer col-4 rounded-3">
+<div class="row">
+    <div class="col p-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TypeName" class="control-label"></label>
+                <input asp-for="TypeName" class="form-control" />
+                <span asp-validation-for="TypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-danger mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-dark mt-1" >Back to vehiclelist</a>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

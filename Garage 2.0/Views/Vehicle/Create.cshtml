@@ -1,0 +1,79 @@
+﻿@using Garage_2._0.Services
+@model Vehicle
+@inject IVehicleTypeSelectListService serviceVT
+@inject IUserSelectListService serviceU
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1 class="text-center">Park vehicle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        <form asp-action="Create" asp-controller="Vehicle" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RegNr" class="control-label"></label>
+                <input asp-for="RegNr" class="form-control" />
+                <span asp-validation-for="RegNr" class="text-danger"></span>
+            </div>
+@*            <div class="form-group">
+                <label asp-for="VehicleType" class="control-label"></label>
+                <select class="form-control" asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType>()">
+                    <option selected="selected" value="">Select Vehicle Type</option>
+                </select>
+                <input asp-for="VehicleType" class="form-control" />
+                <span asp-validation-for="VehicleType" class="text-danger"></span>
+            </div>*@
+            <div class="input-group-append">
+                <label asp-for="VehicleTypeId" class="control-label"></label>
+                <select class="form-control" asp-for="VehicleTypeId" asp-items="@await serviceVT.GetVehicleTypesAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="VehicleTypeId" class="text-danger"></span>
+            </div>
+            <div class="input-group-append">
+                <label asp-for="User" class="control-label"></label>
+                <select class="form-control" asp-for="UserId" asp-items="@await serviceU.GetUsersAsync()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+@*            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Make" class="control-label"></label>
+                <input asp-for="Make" class="form-control" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NrOfWheels" class="control-label"></label>
+                <input asp-for="NrOfWheels" class="form-control" />
+                <span asp-validation-for="NrOfWheels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="parked" type="submit" value="Start parking" class="btn btn-success my-4 mx-3" /><a asp-action="Index" class="btn btn-dark">Go back to mainpage</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

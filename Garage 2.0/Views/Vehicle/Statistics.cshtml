@@ -1,0 +1,64 @@
+﻿@model StatisticsViewModel
+
+@{
+	ViewData["Title"] = "Statistics";
+}
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+	    <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sectioncolors navbar-dark rounded-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Admin">Vehicles in garage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Users" asp-action="Index">View Users</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Statistics">Statistics</a>
+                        </li>
+                   </ul>
+                </div>
+        </nav> 
+
+	<h1>Statistics</h1>
+
+	<div>
+		<hr />
+		<dl class="row">
+			<dt class="col-sm-2">
+				@Html.Raw("Vehicle Type:")
+			</dt>
+			<dd class="col-sm-10">
+				@Html.Raw("Count")
+			</dd>
+			<hr class= "bg-dark"/>
+			@foreach (var vehicleCount in Model.VehicleCount)
+			{
+				<dt class="col-sm-2">
+					<p>@vehicleCount.VehicleType</p>
+				</dt>
+				<dd class="col-sm-10">
+					<p>@vehicleCount.Total</p>
+				</dd>
+			}
+		</dl>
+	</div>
+	<div>
+		<hr class = "bg-dark"/>
+		<dl class = "row">
+			<dt class="col-sm-2">
+				@Html.Raw("Number of wheels:")
+			</dt>
+			<dd class="col-sm-10">
+				@Model.VehiclesNoOfWheels
+			</dd>
+		</dl>
+	</div>
+</div>

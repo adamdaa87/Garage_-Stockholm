@@ -1,0 +1,61 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #e7e7ff;
+    background-image: url(https://wallpaperaccess.com/full/2136799.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+.sectioncolors {
+    background-color: #333333;
+    color: white;
+}
+.searchheight{
+    min-height: 50px;
+}
+.parkbutton{
+    font-size: 25px;
+}
+.listfunc{
+    min-height: 800px;
+}
+.right {
+    position: absolute;
+    left: 0px;
+}
+footer{
+    bottom:0;
+    position: fixed;
+    width: 100%;
+}
+.pagecolors {
+    background-color: rgb(193, 193, 193, 0.7);
+}
+header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.main {
+    margin-top: 95px;
+    overflow: hidden;
+    overflow-y: scroll;
+}

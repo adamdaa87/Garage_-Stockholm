@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IndexViewModel>
+@*@model IEnumerable<User>*@
+
+@{
+    ViewData["Title"] = "UserParkView";
+}
+
+<div class="card-body whitebg">
+<table class="table mb-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingLot)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.RegNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>*@
+                @Html.DisplayNameFor(model => model.TimeOfArrival)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderBy(p => p.ParkingLot).ToList()) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingLot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfArrival)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Visit workshop</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">View vehicle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Stop parking</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+</div>
+</div>

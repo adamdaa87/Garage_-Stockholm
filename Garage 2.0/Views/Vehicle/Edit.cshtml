@@ -1,0 +1,70 @@
+﻿@*@model Garage_2._0.Models.EditVehicleViewModel*@
+@model Vehicle
+
+@{
+    ViewData["Title"] = "Rebuild Vehicle";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1>Welcome to the workshop</h1>
+<h4 class="mt-4">What would you like to rebuild?</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TimeOfArrival" />
+            <input type="hidden" asp-for="ParkingLot" />
+            <input type="hidden" asp-for="RegNr" />
+            <div class="form-group">
+                <label asp-for="ParkingLot" class="control-label"></label>: 
+                @Model.ParkingLot
+            </div>
+            <div class="form-group">
+                <label asp-for="RegNr" class="control-label"></label>: 
+                @Model.RegNr
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeOfArrival" class="control-label"></label>: 
+                @Model.TimeOfArrival
+            </div>
+            <br />
+@*            <div class="form-group">
+                <label asp-for="VehicleType" class="control-label"></label>
+                <select class="form-control" asp-for="VehicleType" asp-items="@Html.GetEnumSelectList<VehicleType_old>()">
+                    <option selected="selected" value="">Select Vehicle Type</option>
+                </select>
+                <span asp-validation-for="VehicleType" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Make" class="control-label"></label>
+                <input asp-for="Make" class="form-control" />
+                <span asp-validation-for="Make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NrOfWheels" class="control-label"></label>
+                <input asp-for="NrOfWheels" class="form-control" />
+                <span asp-validation-for="NrOfWheels" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Rebuild" class="btn btn-success mx-3 my-4" /><a asp-controller="Vehicle" asp-action="Admin" class="btn btn-dark">Go back to vehiclelist</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

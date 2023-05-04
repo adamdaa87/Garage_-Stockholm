@@ -1,0 +1,47 @@
+﻿@model Garage3._0.Core.Entities.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1 class="text-center">Register as member</h1>
+<hr />
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+<div class="row">
+    <div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pnr" class="control-label"></label>
+                <input asp-for="Pnr" class="form-control" placeholder="yyyymmddxxxx" />
+                <span asp-validation-for="Pnr" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-success my-4 mx-3" /><a asp-controller="Vehicle" asp-action="Index" class="btn btn-dark">Go back to mainpage</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<VehicleTypeViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sectioncolors navbar-dark rounded-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Admin">Vehicles in garage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Users" asp-action="Index">View Users</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Statistics">Statistics</a>
+                        </li>
+                   </ul>
+                </div>
+        </nav> 
+<h1>Vehicle Types</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<div class = "container rounded-3">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>

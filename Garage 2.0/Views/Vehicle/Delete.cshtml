@@ -1,0 +1,91 @@
+﻿@*@model Garage_2._0.Models.Vehicle_old*@
+@model Vehicle
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1>Stop parking</h1>
+
+<h3></h3>
+<div>
+    <h4 class="mt-4">Receipt</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ParkingLot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ParkingLot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegNr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegNr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehicleType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeOfArrival)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TimeOfArrival)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User.Fname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Fname)
+        </dd>
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Time Parked")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.TimeParked
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Raw("Cost EUR")
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Cost
+        </dd>
+@*        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)  
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NrOfWheels)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NrOfWheels)
+        </dd>*@
+    </dl>
+    
+    <p class="mt-5">Are you sure you wish to end your parking session?</p>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Stop parking" class="btn btn-danger mx-3" /><a asp-controller="Vehicle" asp-action="Admin" class="btn btn-dark">Go back to vehiclelist</a>
+    </form>
+
+</div>
+</div>

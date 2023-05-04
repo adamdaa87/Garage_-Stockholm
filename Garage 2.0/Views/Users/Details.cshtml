@@ -1,0 +1,94 @@
+﻿@model Garage3._0.Core.ViewModels.UserDetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+<h1 class="text-center">Details</h1>
+<hr />
+<div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Fname)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Fname)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Lname)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Lname)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Pnr)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Pnr)
+        </dd>
+    </dl>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pnr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vehicles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingLot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfArrival)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+    </table>
+
+
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class=" btn btn-primary">Edit</a> |
+    <a asp-action="Index" class=" btn btn-primary" >Back to userlist</a>
+</div>
+</div>
+</div>
+

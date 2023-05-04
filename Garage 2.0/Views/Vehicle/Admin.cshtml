@@ -1,0 +1,132 @@
+﻿@model IEnumerable<IndexViewModel>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="card rounded-3 listfunc border-0 p-3 pagecolors">
+
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 sectioncolors navbar-dark rounded-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Admin">Vehicles in garage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Users" asp-action="Index">View Users</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success ms-2" asp-area="" asp-controller="Vehicle" asp-action="Statistics">Statistics</a>
+                        </li>
+                   </ul>
+                </div>
+        </nav> 
+
+<div class="container-fluid">
+
+<div class="row sectioncolors">
+<div class="col-3"></div>
+<div class="card-title col-6 text-center">
+    <h3 class="m-2">Current cars in garage</h3>
+    <form asp-controller="Vehicle" asp-action="Admin2" method="get">
+    <p>
+        <input class="rounded-3 searchheight" type="text" name="SearchString" placeholder="Search" />
+        <input class="btn btn-success rounded-3 text-white searchheight" type="submit" value="Search" />
+    </p>
+    </form> 
+</div>
+</div>
+</div>
+<div class="card-body whitebg">
+<table class="table mb-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>  
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingLot)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.RegNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+       @*   <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NrOfWheels)
+            </th>
+            <th>*@
+                @Html.DisplayNameFor(model => model.TimeOfArrival)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @*OrderBy(p => p.Fname).ToList())*@
+@foreach (var item in Model.OrderBy(x => x.Fname).ThenBy(y=>y.Fname).ToList()){ 
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingLot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeName)
+            </td>
+@*          <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrOfWheels)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfArrival)
+            </td>
+@*            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Visit workshop</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark">View vehicle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Stop parking</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+</div>
+</div>
